@@ -89,7 +89,7 @@ bot.command("startcountdown", async (ctx) => {
         console.log("Timer stopped:", error.message);
         clearInterval(timerInterval);
       }
-    }, 10000);
+    }, 2000); //UPDATES EVERY 2 SECONDS
   } catch (err) {
     console.log("Error starting countdown:", err.message);
     ctx.reply(
