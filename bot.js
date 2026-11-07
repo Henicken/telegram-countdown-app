@@ -110,7 +110,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
 
 process.once("SIGINT", () => bot.stop("SIGINT"));
