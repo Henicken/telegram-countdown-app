@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Year Countdown Mini App</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #f8fafc;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+      }
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: #38bdf8;
+      }
+      #timer {
+        font-size: 1.8rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>⏳ New Year 2027 Countdown</h1>
+      <div id="timer">Loading...</div>
+    </div>
+
+    <script>
+      const targetDate = new Date("December 31, 2026 23:59:59").getTime();
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+          document.getElementById("timer").innerHTML =
+            "🎉 Happy New Year 2027! 🎉";
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerHTML =
+          `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      setInterval(updateTimer, 1000);
+      updateTimer();
+    </script>
+  </body>
+</html>
