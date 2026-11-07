@@ -101,5 +101,17 @@ bot.command("startcountdown", async (ctx) => {
 bot.launch();
 console.log("Ethiopian Christmas Countdown Bot is running smoothly...");
 
+const express = require("express");
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("Ethiopian Christmas Countdown Bot is alive and running!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+
 process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));
